@@ -1,62 +1,88 @@
-#include<bits/stdc++.h>
+#include <iostream>
 using namespace std;
-
 
 struct ListNode{
     int data;
     ListNode *next ;
-
-    ListNode(int i){
-        data= i ;
-        next= nullptr ;
-    }
-} ;
-//In struct,Make insertion at end, deletion at end functions
-struct LinkedList{
-    ListNode *head ;
-
-    LinkedList(){
-        head= nullptr ;
-    }
-
-    LinkedList(int n){
-        head= new ListNode(n);
-    }
-
-    void InsertNodeAtEnd(int i){
-        if(head==nullptr){
-            head= new ListNode(i) ;
-            return ;
-        }
-        ListNode *temp = head ;
-        while(temp->next!=nullptr){
-            temp = temp->next ;
-        }
-        temp->next = new ListNode(i) ;
-    }
-
-    void DisplayList(){
-        ListNode *temp = head ;
-        while(temp!=nullptr){
-            cout<<temp->data<<"->" ;
-            temp = temp->next ;
-        }
-        cout<<"nullptr" ;
-    }
 } ;
 
-int main(){
+ListNode* insertNodeAtEnd(ListNode *head,int val){
+    if(head==NULL){
+        head= new ListNode ;
+        head->data = val;
+        head->next = NULL ;
+        return head;
+    }
+    ListNode *itr = head ;
+    while(itr->next!=NULL){
+        itr= itr->next ;
+    }
+    itr->next = new ListNode ;
+    itr= itr->next ;
+    itr->data= val ;
+    itr->next = nullptr ;
+    return head ;
+}
+
+void deleteNodeAtEnd(ListNode * head){
+    ListNode *itr = head ;
+    while(itr->next->next!=NULL){
+        itr= itr->next ;
+    }
+    ListNode *temp = itr->next ;
+    itr->next= NULL ;
+    free(temp) ;
+    temp = NULL ;
+}
+
+void displayLinkedList(ListNode *head){
+    ListNode *itr = head ;
+    while(itr!=NULL){
+        cout<<itr->data<<"->" ;
+        itr= itr->next ;
+    }
+    cout<<"nullptr\n" ;
+}
+
+ListNode* insertNodeAtStart(ListNode *head, int val){
+    ListNode *temp = new ListNode ;
+    temp->data = val ;
+    temp->next = NULL ;
+    temp->next = head ;
+    head = temp ;
+    return head ;
+}
+
+ListNode* deleteNodeAtStart(ListNode *head){
+    ListNode *temp = head ;
+    head= head->next ;
+    free(temp) ;
+    temp = nullptr ;
+    return head ;
+}
+
+
+int main() 
+{
+    ListNode *head = NULL ;
     int n ;
     cin>>n ;
-    int inputTemp ;
-
-    LinkedList l ;
-    for(int i=0;i<n;i++){
-        cin>>inputTemp ;
-        l.InsertNodeAtEnd(inputTemp) ;
+    int temp ;
+    while(n--){
+        cin>>temp ;
+        head= insertNodeAtEnd(head, temp) ;
     }
-    l.DisplayList() ;
-    return  0;
+    displayLinkedList(head) ;
+    deleteNodeAtEnd(head);
+    displayLinkedList(head) ;
+    head = deleteNodeAtStart(head) ;
+    displayLinkedList(head) ;
+    cout<<"Insert element-> " ;
+    cin>>temp ;
+    head = insertNodeAtStart(head, temp) ;
+    displayLinkedList(head) ;
+    return 0;
 }
+
 
 
