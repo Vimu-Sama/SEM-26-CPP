@@ -1,0 +1,92 @@
+#include <iostream>
+using namespace std;
+
+struct ListNode{
+    int data;
+    ListNode *next ;
+} ;
+
+struct HeaderNode{
+    int size ;
+    ListNode *next ;
+};
+
+//try coding it yourself
+void insertNodeAtEnd(HeaderNode *head,int val){
+    ListNode *temp = (ListNode*)malloc(sizeof(ListNode)) ;
+    temp->data = val ;
+    temp->next = (ListNode*)head ;
+    if(head->size==0){
+        head->next= temp ;
+        head->size= 1;
+        return ;
+    }
+    ListNode *itr = head->next ;
+    while(itr->next!= (ListNode*)head){
+        itr= itr->next ;
+    }
+    itr->next= temp ;
+    head->size++ ;
+}
+
+void deleteNodeAtEnd(HeaderNode *head){
+    if(head->size == 0){
+        return ;
+    }
+    ListNode *temp = head->next ;
+    if(head->size==1){
+        head->next= (ListNode*)head ;
+        free(temp) ;
+        head->size= 0 ;
+        return ;
+    }
+    while(temp->next->next!=(ListNode*) head){
+        temp =temp->next ;
+    }
+    ListNode *temp2 = temp->next ;
+    temp->next= (ListNode*)head ;
+    head->size-- ;
+    free(temp2) ;
+    temp2=NULL ;
+}
+
+void displayLinkedList(HeaderNode *head){
+    ListNode *temp = head->next ;
+    while(temp!=(ListNode*) head){
+        cout<<temp->data<<"->" ;
+        temp = temp->next ;
+    }
+    cout<<"header\n" ;
+}
+
+//try coding it yourself
+void insertNodeAtStart(HeaderNode *head, int val){
+    
+}
+
+//try coding it yourself
+void deleteNodeAtStart(HeaderNode *head){
+    
+}
+
+
+int main() 
+{
+    HeaderNode *head = new HeaderNode ;
+    head->size = 0 ;
+    head->next = (ListNode*)head ;
+    int n ;
+    cin>>n ;
+    int temp ;
+    while(n--){
+        cin>>temp ;
+        insertNodeAtEnd(head, temp) ;
+    }
+    displayLinkedList(head)  ;
+    deleteNodeAtEnd(head)  ;
+    displayLinkedList(head) ;
+    return 0 ;
+}
+
+
+
