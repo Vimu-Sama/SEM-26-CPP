@@ -24,7 +24,15 @@ void insertNodeAtEnd(ListNode **head,int val){
 }
 
 void deleteNodeAtEnd(ListNode **head){
+    if(*head==NULL){
+        return ;
+    }
     ListNode *itr = *head ;
+    if((*head)->next==NULL){
+        *head= (*head)->next ;
+        free(itr) ;
+        return ;
+    }
     while(itr->next->next!=NULL){
         itr= itr->next ;
     }
@@ -32,6 +40,7 @@ void deleteNodeAtEnd(ListNode **head){
     itr->next= NULL ;
     free(temp) ;
     temp = NULL ;
+    return ;
 }
 
 void displayLinkedList(ListNode *head){
@@ -52,6 +61,9 @@ void insertNodeAtStart(ListNode **head, int val){
 }
 
 void deleteNodeAtStart(ListNode **head){
+    if(*head==NULL){
+        return;
+    }
     ListNode *temp = *head ;
     *head= (*head)->next ;
     free(temp) ;
