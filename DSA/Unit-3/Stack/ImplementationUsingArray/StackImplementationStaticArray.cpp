@@ -8,10 +8,10 @@ typedef struct {
 } Stack ;
 
 void initialization(Stack *s){
+    s->size = 10 ;
     for(int i=0;i<(s->size)-1;i++){
         s->ar[i]= 0 ;
     }
-    s->size = 10 ;
     s->top= -1 ;
 }
 
