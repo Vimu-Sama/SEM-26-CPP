@@ -1,0 +1,2 @@
+This is a new file! Right now we are only creating and writing on that file, treating it as completely new!This is the start of example!
+Appending this line to the File ExampleFileText.txt
