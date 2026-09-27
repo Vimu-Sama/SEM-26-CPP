@@ -8,6 +8,7 @@ using namespace std;
 // pop()
 // empty()
 // top() 
+// size()
 
 int main(){
     stack<int> s ;
@@ -16,9 +17,11 @@ int main(){
     s.push(13) ;
     s.push(14) ;
     s.push(15) ;
+    cout<<"Size of stack-> "<<s.size()<<endl ;
     while(!s.empty()){
         cout<<s.top()<<" " ;
         s.pop() ;
     }
+    cout<<"\nSize of empty stack-> "<<s.size()<<endl ;
     return 0 ;
 }
