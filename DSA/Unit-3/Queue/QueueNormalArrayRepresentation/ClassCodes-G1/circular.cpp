@@ -35,6 +35,7 @@ void push(Queue &q, int val){
 void pop(Queue &q){
     if(q.currSize == 0){
         cout<<"Queue Underflow!" ;
+        return ;
     }
     ++q.front ;
     q.front = (q.front)%q.maxSize ;
