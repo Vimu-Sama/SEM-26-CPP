@@ -1,70 +1,70 @@
 #include<iostream>
+
 using namespace std;
 
 typedef struct {
     int *ar ;
+    int currSize ;
     int front ;
     int rear ;
-    int size ;
+    int maxSize ;
 } Queue ;
 
-void init(Queue &q, int n){
-    q.ar = new int[n] ;
+void init(Queue &q, int totalSize){
+    q.ar = (int*)malloc(sizeof(int) * totalSize) ;
+    q.currSize = 0 ;
     q.front = -1 ;
     q.rear = -1 ;
-    q.size = n ;
+    q.maxSize = totalSize ;
 }
 
 void push(Queue &q, int val){
-    if(q.rear == q.size-1){
-        cout<<"Overflow!" ;
+    if(q.currSize == q.maxSize){
+        cout<<"Queue Overflow!" ;
         return ;
     }
-    ++q.rear;
-    q.ar[q.rear]= val;
+    ++q.rear ;
+    q.rear = (q.rear)%q.maxSize ;
+    q.ar[q.rear]= val ;
     if(q.front==-1){
-        q.front = 0 ;
+        q.front= 0 ;
     }
+    q.currSize++ ;
 }
 
 void pop(Queue &q){
-    if(q.front==-1 || q.front>q.rear){ //condition to check if queue is empty
-        cout<<"Underflow!" ;
-        return ;
+    if(q.currSize == 0){
+        cout<<"Queue Underflow!" ;
     }
-    q.front++ ;
+    ++q.front ;
+    q.front = (q.front)%q.maxSize ;
+    q.currSize-- ;
 }
 
 bool empty(Queue &q){
-    if(q.front==-1 || q.front>q.rear){
+    if(q.currSize==0){
         return true ;
+    } else {
+        return false ;
     }
-    return false ;
-}
-
-int size(Queue &q){
-    if(q.front==-1){
-        return 0;
-    }
-    return (q.rear-q.front+1) ;
 }
 
 int front(Queue &q){
-    if(q.front==-1){
-        cout<<"The queue is empty!" ;
+    if(q.currSize==0){
+        cout<<"Queue empty!" ;
         return -1 ;
     }
     return q.ar[q.front] ;
 }
 
+
 int rear(Queue &q){
-    if(q.rear==-1){
-        cout<<"The queue is empty!" ;
+    if(q.currSize==0){
+        cout<<"Queue empty!" ;
         return -1 ;
     }
-    return q.ar[q.rear];
+    return q.ar[q.rear] ;
 }
-
 
 int main(){
     int n ;
