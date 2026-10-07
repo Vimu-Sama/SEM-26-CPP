@@ -21,7 +21,7 @@ int main(){
         Student(102, "Two") 
     } ;
     ofstream outStream("file.dat", ios::out | ios::binary) ;
-    outStream.write(reinterpret_cast<char*>(&s),sizeof(Student)) ;
-    outStream.write(reinterpret_cast<char*>(&s), sizeof(Student)*2) ;
+    outStream.write(reinterpret_cast<char*>(&s[0]),sizeof(Student)) ;
+    outStream.write(reinterpret_cast<char*>(&s[1]), sizeof(Student)) ;
     return 0 ;
 }
