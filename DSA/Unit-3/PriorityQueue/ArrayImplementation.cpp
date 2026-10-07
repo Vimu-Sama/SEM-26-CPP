@@ -25,13 +25,13 @@ bool isFull(PriorityQueue &pq) {
 }
 
 // Insert element
+// push()
 void enqueue(PriorityQueue &pq, int value) {
 
     if (isFull(pq)) {
         cout << "Priority Queue is Full\n";
         return;
     }
-
     pq.arr[pq.size] = value;
     pq.size++;
 
@@ -39,6 +39,7 @@ void enqueue(PriorityQueue &pq, int value) {
 }
 
 // Remove highest-priority element
+//pop()
 void dequeue(PriorityQueue &pq) {
 
     if (isEmpty(pq)) {
@@ -128,7 +129,7 @@ int main() {
     enqueue(pq, 10);
     enqueue(pq, 50);
     enqueue(pq, 20);
-
+    
     display(pq);
 
     peek(pq);

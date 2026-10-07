@@ -53,9 +53,12 @@ void insertFront(Deque &dq, int value) {
     }
 
     // Move front backwards circularly
-    dq.front = (dq.front - 1 + dq.capacity)
-               % dq.capacity;
-
+    // dq.front = (dq.front - 1 + dq.capacity)
+    //            % dq.capacity;
+    dq.front-- ;
+    if(dq.front==-1){
+        dq.front = dq.capacity-1 ;
+    }
     dq.arr[dq.front] = value;
 
     dq.size++;
@@ -143,9 +146,12 @@ void deleteRear(Deque &dq) {
     }
 
     // Move rear backwards
-    dq.rear = (dq.rear - 1 + dq.capacity)
-              % dq.capacity;
-
+    // dq.rear = (dq.rear - 1 + dq.capacity)
+    //           % dq.capacity;
+    dq.rear-- ;
+    if(dq.rear==-1){
+        dq.rear = dq.capacity-1 ;
+    }
     dq.size--;
 }
 
