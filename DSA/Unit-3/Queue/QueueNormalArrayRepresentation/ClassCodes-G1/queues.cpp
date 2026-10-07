@@ -71,7 +71,7 @@ int main(){
     cin>>n ;
     Queue q ;
     init(q, n) ;
-    push(q, 10) ;
+    push(q, 10) ; 
     push(q, 20) ;
     push(q, 30) ;
     push(q, 40) ;
