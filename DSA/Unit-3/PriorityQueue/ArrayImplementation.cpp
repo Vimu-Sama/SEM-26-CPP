@@ -4,7 +4,7 @@ using namespace std;
 struct PriorityQueue {
     int *arr;
     int size;
-    int capacity;
+    int capacity; //maxSize
 };
 
 // Initialize Priority Queue
@@ -12,6 +12,7 @@ void initialize(PriorityQueue &pq, int capacity) {
     pq.capacity = capacity;
     pq.size = 0;
     pq.arr = new int[capacity];
+    //pq.arr = (int*)malloc(sizeof(int) * capacity) ;
 }
 
 // Check if empty
@@ -32,9 +33,10 @@ void enqueue(PriorityQueue &pq, int value) {
         cout << "Priority Queue is Full\n";
         return;
     }
+    //pq.size=0
     pq.arr[pq.size] = value;
     pq.size++;
-
+    //pq.size= 1
     cout << value << " inserted\n";
 }
 
@@ -60,10 +62,7 @@ void dequeue(PriorityQueue &pq) {
          << " removed\n";
 
     // Shift elements
-    for (int i = highestPriorityIndex;
-         i < pq.size - 1;
-         i++) {
-
+    for (int i = highestPriorityIndex;i < pq.size - 1; i++) {
         pq.arr[i] = pq.arr[i + 1];
     }
 
@@ -129,16 +128,16 @@ int main() {
     enqueue(pq, 10);
     enqueue(pq, 50);
     enqueue(pq, 20);
-    
+    //30,10,50,20
     display(pq);
 
-    peek(pq);
+    peek(pq); //50
 
-    dequeue(pq);
+    dequeue(pq); //30,10,20
 
     display(pq);
 
-    dequeue(pq);
+    dequeue(pq);//10,20
 
     display(pq);
 

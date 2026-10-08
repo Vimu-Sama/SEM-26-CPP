@@ -7,7 +7,7 @@ struct Node {
 };
 
 struct PriorityQueue {
-    Node* front;
+    Node* front; //head
     int size;
 };
 
