@@ -16,6 +16,9 @@ class Student{
         //object with move(), for example: Student s2 = move(s1)
         //instead of copying the dynamically allocated memory,
         //we transfer the address from the old object to the new object
+        // &other -> pass by reference
+        // the another & in front of &other is basically telling
+        // compiler that this is rvalue
         Student (Student &&other){
 
             //copy the address stored in other.id

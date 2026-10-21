@@ -15,7 +15,7 @@ class Student{
         }
 
         void toCSV(ofstream &outStream) const{
-            string s = to_string(regId);
+            string s = to_string(regId); //converting integer to a string
             s= s+ "," + name + "\n" ;
             outStream<<s ;
         }
@@ -37,6 +37,7 @@ int main(){
     ofstream outStream("records.csv") ;
     if(!outStream.is_open()){
         cerr<<"Error in opening the file!" ;
+        outStream.open("records.csv") ;
         return 0;
     }
     outStream<<"RegId,Name\n" ;

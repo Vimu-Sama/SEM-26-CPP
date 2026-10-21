@@ -35,7 +35,7 @@ int main(){
     ifstream readStream("records.csv") ;
     if(!readStream.is_open()){
         cerr<<"Error in opening the file!" ;
-        return 0;
+        readStream.open("records.csv") ;
     }
     string temp ;
     bool flag= true ;

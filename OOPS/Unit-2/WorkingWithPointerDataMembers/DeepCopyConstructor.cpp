@@ -32,7 +32,7 @@ int main(){
    Student s1(101, "Raman") ;
    //the below statement will do a deep copy
    //as we have implemented the copy constructor to handle this
-   Student s2 = s1 ;
+   Student s2 = s1 ; //Student s2(s1) ;
    s1.displayDetails() ;
    cout<<s1.getAddressOfId()<<endl ;
    cout<<"\nSecond students details->"<<endl;
