@@ -3,7 +3,6 @@
 using namespace std ;
 
 class A{
-    int count ;
     public:
         A(){
             cout<<"Class A constructor called!"<<endl ;
